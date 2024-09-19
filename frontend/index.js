@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const postForm = document.getElementById('postForm');
 
     newPostBtn.addEventListener('click', () => {
-        newPostForm.style.display = 'block';
+        newPostForm.classList.toggle('hidden');
     });
 
     postForm.addEventListener('submit', async (e) => {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const body = quill.root.innerHTML;
 
         await backend.addPost(title, body, author);
-        newPostForm.style.display = 'none';
+        newPostForm.classList.add('hidden');
         postForm.reset();
         quill.setContents([]);
         await loadPosts();
